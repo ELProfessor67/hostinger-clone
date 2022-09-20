@@ -1,0 +1,202 @@
+@use './colors' as *;
+@use './mixin' as *;
+
+.footer
+{
+    background-color: $whitesmoke;
+}
+
+footer
+{
+    width: 100%;
+    overflow-y: hidden;
+    padding: 4rem 6rem;
+    padding-bottom: 0%;
+    background-color: $whitesmoke;
+    @include grid(6);
+    column-gap: 1.5rem;
+    > .content
+    {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        // padding-right: 2rem;
+        > img 
+        {
+            width: 17rem;
+            margin-bottom: 2rem;
+        }
+        > p 
+        {
+            font-size: 1.34rem;
+            color: $sub_link;
+            max-width: 30rem;
+        }
+        > .payment_logo
+        {
+            @include flex;
+            justify-content: flex-start;
+            gap: .6rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        > a 
+        {
+            font-size: 1.2rem;
+            color: $sub_link;
+            display: block;
+            margin-top: 1rem;
+        }
+    }
+    > div
+    {
+        > h3
+        {
+           color: $sub_link;
+           font-size: 1.5rem; 
+           padding-bottom: 2rem;
+           text-transform: uppercase;
+        }
+        > h4 
+        {
+           color: $sub_link;
+           font-size: 1.5rem; 
+           padding: 2rem 0 .8rem 0;
+           text-transform: uppercase;
+        }
+        > ul 
+        {
+            list-style: none;
+            > li
+            {
+                margin: .6rem 0;
+                > a 
+                {
+                    color: $sub_link;
+                    font-size: 1.3rem;
+                    opacity: .9;
+                    text-transform: capitalize;
+                }
+                > span 
+                {
+                    color: $sub_link;
+                    font-size: .8rem;
+                    padding-right: .5rem;
+                    opacity: .9;
+                }
+            }
+        }
+        > .social
+        {
+            @include flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 4rem;
+            > span 
+            {
+                width: 2rem;
+                height: 2rem;
+                background-color: $sub_link;
+                color: $white;
+                border-radius: .5rem;
+                display: grid;
+                place-items: center;
+                font-size: 1.3rem;
+                cursor: pointer;
+                transition: .3s;
+                &:hover 
+                {
+                    background-color: $white;
+                    color: $sub_link;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.bottom
+{
+    border-top: .2rem solid $lineColor;
+    padding: 2rem 0;
+    max-width: 90rem;
+    margin: auto;
+    margin-top: 2rem;
+    @include flex($justify: space-between);
+    > p 
+    {
+        font-size: 1.4rem;
+        color: $sub_link;
+        opacity: .9;
+    }
+}
+
+@media screen and (max-width: 1250px)
+{
+    footer
+    {
+        padding: 4rem;
+    }
+}
+
+@media screen and (max-width: 1200px)
+{
+    .bottom
+    {
+        padding: 2rem;
+    }
+    footer
+    {
+        grid-template-columns: repeat(4,1fr);
+        column-gap: 10rem;
+        row-gap: 3rem;
+        padding: 4rem 8rem;
+        > .content
+        {
+            grid-column-start: -1;
+            grid-column-end: 1; 
+            > p 
+            {
+                max-width: 80rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1150px)
+{
+    footer 
+    {
+        padding: 4rem;
+    }
+}
+
+@media screen and (max-width: 1010px)
+{
+    footer 
+    {
+        column-gap: 5rem;
+    }
+}
+
+@media screen and (max-width: 850px)
+{
+    footer 
+    {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .bottom
+    {
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+@media screen and (max-width: 500px)
+{
+    footer 
+    {
+        grid-template-columns: repeat(1,1fr);
+    }
+}

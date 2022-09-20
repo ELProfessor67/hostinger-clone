@@ -1,0 +1,208 @@
+@use './colors' as *;
+@use './mixin' as *;
+
+.hero_section
+{
+    padding: 4rem 1rem;
+    padding-top: 10rem;
+    background-color: $bg;
+    // height: 97vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    &::before
+    {
+        content: '';
+        position: absolute;
+        top: 25%;
+        left: 0;
+        background: url('../../public/images/mainleft.png');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70%;
+        width: 30%;
+    }
+    &::after
+    {
+        content: '';
+        position: absolute;
+        top: 25%;
+        right: 0;
+        background: url('../../public/images/mainright.png');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70%;
+        width: 30%;
+    }
+    > main
+    {
+        position: relative;
+        z-index: 10;
+        max-width: 40rem;
+        margin: auto;
+        @include flex($dec: column);
+        gap: 2rem;
+        > h1 
+        {
+            font-size: 3rem;
+            color: $white;
+            text-align: center;
+        }
+        
+        > h2 
+        {
+            color: $white;
+            @include flex;
+            gap: .2rem;
+            > span
+            {
+                font-size: 2rem;
+                align-self: flex-start;
+            }
+            > span:nth-child(2)
+            {
+                font-size: 5rem;
+            }
+            > span:last-child
+            {
+                align-self: flex-end;
+            }
+        }
+
+        > p
+        {
+            font-size: 1.5rem;
+            color: $white;
+            text-align: center;
+
+            > span 
+            {
+                color: rgb(13, 201, 85);
+                font-size: 1rem;
+                padding-right: .5rem;
+            }
+        }
+        > p.para
+        {
+            padding: 0 4rem;
+        }
+
+        > .timer
+        {
+            @include flex;
+            gap: .4rem;
+            > .count
+            {
+                @include flex($dec: column);
+                gap: .2rem;
+                > span:first-child
+                {
+                    width: 4.4rem;
+                    height: 4.4rem;
+                    background-color: $white;
+                    border-radius: .5rem;
+                    @include center;
+                    font-size: 1.8rem;
+                    color: $black;
+                }
+                > span:last-child
+                {
+                    font-size: 1.3rem;
+                    color: $white;
+                }
+            }
+            > span 
+            {
+                font-size: 1.8rem;
+                padding-bottom: 1.3rem;
+                color: $white;
+                opacity: .4;
+            }
+        }
+
+        > .btn
+        {
+            width: 21rem;
+            padding: 1rem;
+            background-color: $pink;
+            color: $white;
+            text-align: center;
+            font-size: 1.8rem;
+            border-radius: 2rem;
+            transition: .3s;
+            &:hover
+            {
+                // transform: translateY(-.3rem);
+                // box-shadow: 0 3px 10px $black;
+                background-color: darken($color: $pink, $amount: 10%);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1092px)
+{
+   .hero_section
+   {
+        &::before
+        {
+           top: 5%;
+           left: -30%;
+           background: url('../../public/images/mainright.png');
+           width: 50%;
+           height: 100%;
+        }
+        &::after
+        {
+            top: 5%;
+            left: 80%;
+            background: url('../../public/images/mainright.png');
+            width: 50%;
+            height: 100%;
+        }
+   } 
+}
+
+@media screen and (max-width: 1000px)
+{
+   .hero_section
+   {
+        &::before
+        {
+           top: 5%;
+           left: -10%;
+           width: 60%;
+           height: 100%;
+           opacity: .7;
+        }
+        &::after
+        {
+            top: 5%;
+            left: 60%;
+            width: 60%;
+            height: 100%;
+            opacity: .7;
+        }
+   } 
+}
+
+@media screen and (max-width: 775px)
+{
+   .hero_section
+   {
+        &::before
+        {
+          display: none;
+        }
+        &::after
+        {
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            opacity: .4;
+        }
+   } 
+}

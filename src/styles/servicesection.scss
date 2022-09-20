@@ -1,0 +1,88 @@
+@use './colors' as *;
+@use './mixin' as *;
+
+.service_section
+{
+    padding: 3rem;
+    width: 100%;
+    overflow-x: hidden;
+    > h2
+    {
+        text-align: center;
+        font-size: 3.3rem;
+        color: $sub_link;
+    }
+    > .service_box
+    {
+        @include grid(3);
+        row-gap: 2rem;
+        max-width: 92rem;
+        margin: auto;
+        margin-top: 5rem;
+        // column-gap: 10rem;
+        > div
+        {
+            @include flex;
+            justify-content: flex-start;
+            > img 
+            {
+                width: 3.5rem;
+            }
+            > p 
+            {
+                font-size: 1.8rem;
+                color: $sub_link;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px)
+{
+    .service_section > .service_box
+    {
+        max-width: 80rem;
+    }
+}
+
+@media screen and (max-width: 990px)
+{
+    .service_section
+    {
+        > .service_box
+        {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 80rem;
+        }
+    }
+}
+
+@media screen and (max-width: 850px)
+{
+    .service_section > .service_box
+    {
+        max-width: 70rem;
+    }
+}
+
+@media screen and (max-width: 700px)
+{
+    .service_section > .service_box
+    {
+        max-width: 60rem;
+    }
+}
+
+@media screen and (max-width: 575px)
+{
+    .service_section
+    {
+        padding: 2rem;
+        > .service_box
+        {
+            grid-template-columns: repeat(1,1fr);
+            margin-top: 3rem;
+        }
+    }
+}

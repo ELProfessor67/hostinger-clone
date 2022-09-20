@@ -1,0 +1,140 @@
+@use './colors' as *;
+@use './mixin' as *;
+
+.domain_section
+{
+    width: 100%;
+    padding: 5rem 3rem;
+    background-color: $whitesmoke;
+    overflow-x: hidden;
+    @include flex(column);
+    gap: 3rem;
+    > h2
+    {
+        @include heading;
+    }
+    > p
+    {
+        color: $sub_link;
+        font-size: 1.5rem;
+        max-width: 60rem;
+        text-align: center;
+        opacity: .8;
+    }
+    > .search_box
+    {
+        @include flex;
+        width: 60rem;
+        max-width: 60rem;
+        box-shadow: $shadow;
+        border-radius: 2rem;
+        transform: .3s;
+        background-color: $white;
+        &:hover
+        {
+            outline: .1rem solid #727586;
+        }
+        > div
+        {
+            width: 80%;
+            padding: 1.2rem;
+            > input 
+            {
+                background: none;
+                outline: none;
+                border: none;
+                font-size: 1.5rem;
+                width: 100%
+            }
+        }
+        > .btn
+        {
+            @include button(#727586, 20%);
+            border: none;
+        }
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .domain_section
+    {
+        > p 
+        {
+            max-width: 45rem;
+        }
+        > .search_box 
+        {
+            flex-direction: column;
+            background-color: transparent;
+            box-shadow: none;
+            width: 45rem;
+            max-width: 45rem;
+            gap: 2rem;
+            &:hover
+            {
+                outline: none;
+            }
+            > div
+            {
+                box-shadow: $shadow;
+                width: 100%;
+                border-radius: 2rem;
+                text-align: center;
+                background-color: $white;
+                &:hover
+                {
+                    outline: .1rem solid $bg;
+                }
+                > input 
+                {
+                    text-align: center;
+                }
+            }
+            > .btn
+            {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .domain_section > .search_box
+    {
+        max-width: 40rem;
+    }
+}
+
+@media screen and (max-width: 550px)
+{
+    .domain_section > .search_box
+    {
+        max-width: 35rem;
+    }
+}
+
+@media screen and (max-width: 400px)
+{
+    .domain_section > .search_box
+    {
+        max-width: 30rem;
+    }
+}
+
+@media screen and (max-width: 350px)
+{
+    .domain_section > .search_box
+    {
+        max-width: 25rem;
+    }
+}
+
+@media screen and (max-width: 300px)
+{
+    .domain_section > .search_box
+    {
+        max-width: 20rem;
+    }
+}

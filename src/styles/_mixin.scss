@@ -1,0 +1,37 @@
+@mixin flex($dec: row, $justify: center){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $dec;
+}
+
+@mixin center {
+    display: grid;
+    place-items: center;
+}
+
+@mixin grid($column){
+    display: grid;
+    grid-template-columns: repeat($column,1fr);
+}
+
+@mixin heading{
+    font-size: 3.3rem;
+    color: #1b0850;
+    text-align: center;
+}
+
+@mixin button($color, $width){
+    width: $width;
+    padding: 1rem;
+    background-color: $color;
+    color: white;
+    text-align: center;
+    font-size: 1.8rem;
+    border-radius: 2rem;
+    transition: .3s;
+    &:hover
+    {
+        background-color: darken($color: $color, $amount: 10%);
+    }
+}

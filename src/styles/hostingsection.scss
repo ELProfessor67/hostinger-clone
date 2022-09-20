@@ -1,0 +1,260 @@
+@use './mixin' as *;
+@use './colors' as *;
+
+.hosting_section
+{
+    width: 100%;
+    // height: 100vh;
+    padding: 3rem;
+    overflow-x: hidden;
+
+    > .logo_box
+    {
+        max-width: 55rem;
+        margin: auto;
+        @include flex;
+        gap: 6rem;
+        overflow-y: auto;
+        &::-webkit-scrollbar
+        {
+            display: none;
+        }
+        > img 
+        {
+            width: 14rem;
+        }
+        > img:nth-child(2)
+        {
+            width: 13rem;
+        }
+        > img:last-child
+        {
+            width: 16rem;
+        }
+    }
+
+    > .content
+    {
+        max-width: 45rem;
+        margin: auto;
+        margin-top: 4rem;
+        > h2 
+        {
+            font-size: 3.3rem;
+            color: $sub_link;
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
+        > p 
+        {
+            font-size: 1.4rem;
+            color: $black;
+            opacity: .6;
+            text-align: center;
+        }
+    }
+
+    > .card
+    {
+        max-width: 82rem;
+        // border: .2rem solid $lineColor;
+        margin: auto;
+        margin-top: 4rem;
+        > div:first-child
+        {
+            padding: 1rem;
+            background-color: $bg;
+            text-align: center;
+            border-radius: .5rem;
+            border-bottom-left-radius: 0%;
+            border-bottom-right-radius: 0%;
+            > h2 
+            {
+                font-size: 2.8rem;
+                color: $white;
+            }
+        }
+
+        > div:nth-child(2)
+        {
+            border: .2rem solid $lineColor;
+            border-top-width: 0;
+            border-bottom-width: 0;
+            padding: 3rem 0;
+            > .top_box, .bottom_box > div
+            {
+                @include grid(3);
+                > ul 
+                {
+                    @include flex(column);
+                    gap: .7rem;
+                    border-right: .2rem solid $lineColor;
+                    padding: 1.5rem 1rem;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    > li 
+                    {
+                        list-style: none;
+                        color: $sub_link;
+                        padding: 0 2rem;
+                        > span:first-child
+                        {
+                            font-size: 1rem;
+                            color: rgb(13, 201, 85);
+                            padding-right: .5rem;
+                        }
+                        > strong
+                        {
+                            font-size: 1.4rem;
+                        }
+                        > span:nth-child(3)
+                        {
+                            font-size: 1.4rem;
+                            opacity: .9;
+                        }
+                    }
+                }
+                > ul:nth-child(2)
+                {
+                    align-items: center;
+                    padding-top: .8rem;
+                    > div > h2
+                    {
+                        font-size: 3.5rem;
+                        color: $sub_link;
+                        @include flex;
+                        > span:first-child
+                        {
+                            font-size: 2rem;
+                            align-self: flex-start;
+                        }
+                        > span:nth-child(2)
+                        {
+                            font-size: 5rem;
+                        }
+                        > span:last-child
+                        {
+                            font-size: 2rem;
+                            align-self: flex-end;
+                        }
+                    }
+                    > div > p
+                    {
+                        font-size: 1.5rem;
+                        color: $sub_link;
+                        text-align: center;
+                    }
+                    > .btn
+                    {
+                        width: 80%;
+                        display: block;
+                        padding: 1rem;
+                        text-align: center;
+                        background-color: $bg;
+                        font-size: 1.8rem;
+                        color: $white;
+                        margin-top: 1rem;
+                        border-radius: 2rem;
+                        &:hover
+                        {
+                            background-color: darken($color: $bg, $amount: 10%);
+                        }
+                    }
+                }
+                > ul:last-child
+                {
+                    border-right-width: 0;
+                }
+            }
+            .bottom_box 
+            {
+                > h2
+                {
+                    text-align: center;
+                    padding: 2rem;
+                    color: $sub_link;
+                    font-size: 1.8rem;
+                }
+                > div > ul:nth-child(2)
+                {
+                    align-items: flex-start;
+                }
+            }
+        }
+
+        > div:last-child
+        {
+            padding: 2.2rem 1rem;
+            text-align: center;
+            border: .2rem solid $lineColor;
+            border-radius: .5rem;
+            border-top-left-radius: 0%;
+            border-top-right-radius: 0%;
+            > a
+            {
+                font-size: 1.5rem;
+                text-decoration: underline;
+                opacity: .9;
+                color: $sub_link;
+                &:hover
+                {
+                    color: darken($color: $sub_link, $amount: 5%);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 990px)
+{
+    .hosting_section > .card > div:nth-child(2) > .top_box > ul:first-child
+    {
+        display: none;
+    }
+    .hosting_section > .card > div:nth-child(2) .bottom_box > div > ul:first-child
+    {
+        display: none;
+    }
+
+    .hosting_section > .card > div:nth-child(2)
+    {
+        .top_box , .bottom_box > div
+        {
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+    .hosting_section > .card
+    {
+        max-width: 70rem;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .hosting_section > .card > div:nth-child(2) > .top_box > ul:last-child
+    {
+        display: none;
+    }
+
+    .hosting_section > .card > div:nth-child(2) > .top_box > ul:nth-child(2)
+    {
+        border-right-width: 0;
+    }
+
+    .hosting_section > .card > div:nth-child(2) .bottom_box > div > ul:nth-child(2)
+    {
+        display: none;
+    }
+
+    .hosting_section > .card > div:nth-child(2)
+    {
+        .top_box , .bottom_box > div
+        {
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+    .hosting_section > .card
+    {
+        max-width: 40rem;
+    }
+}

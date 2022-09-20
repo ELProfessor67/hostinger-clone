@@ -1,0 +1,603 @@
+@use './mixin' as *;
+@use './colors' as *;
+
+header
+{
+    width: 100%;
+    @include flex($justify: space-between);
+    padding: 1.5rem 3rem;
+    background-color: $bg;
+    position: absolute;
+    z-index: 1000;
+
+    > div:first-child
+    {
+        gap: 3rem;
+    }
+
+    > div
+    {
+        @include flex;
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1000;
+        > div > img 
+        {
+            width: 12rem;
+            filter: invert(100%);
+        }
+
+        .languages
+        {
+            @include flex;
+            gap: .5rem;
+            color: $white;
+            > span
+            {
+                font-size: 1.6rem;
+            }
+        }
+
+        > nav ul
+        {
+            @include flex;
+            gap: 2.5rem;
+            list-style: none;
+            > li 
+            {
+                font-size: 1.5rem;
+                position: relative;
+                cursor: pointer;
+                > p 
+                {
+                    @include flex;
+                    gap: .2rem;
+                    color: $white;
+                    > span 
+                    {
+                        font-size: 2rem;
+                        display: grid;
+                        place-items: center;
+                    }
+                    &:hover
+                    {
+                        opacity: .5;
+                    }
+                }
+                > ul
+                {
+                    @include flex($dec:column);
+                    align-items: flex-start;
+                    gap: 1rem;
+                    position: absolute;
+                    width: 35rem;
+                    // border: 1px solid black;
+                    box-shadow: $shadow;
+                    padding: 2rem;
+                    left: -167%;
+                    top: 210%;
+                    border-radius: .5rem;
+                    // z-index: 100000;
+                    background-color: $white;
+
+                    &::before
+                    {
+                        content: '';
+                        border: 1.5rem solid transparent;
+                        border-bottom-color: $white;
+                        position: absolute;
+                        top: -12%;
+                        left: 45%;
+                    }
+
+                    > li > a
+                    {
+                        @include flex;
+                        gap: 2rem;
+                        color: $sub_link;
+
+                        > div > img 
+                        {
+                            width: 4rem;
+                        }
+
+                        > div 
+                        {
+                            > h2 
+                            {
+                                font-size: 1.8rem;  
+                            }
+                            > p 
+                            {
+                                font-size: 1.4rem;
+                            }
+                        }
+                    }
+                }
+
+                > .vps
+                {
+                    left: -265%;
+                }
+
+                > .email
+                {
+                    left: -234%;
+                    top: 210%;
+                    &::before
+                    {
+                        // border-bottom-color: red;
+                        top: -15%;
+                    }
+                }
+
+                > .btn
+                {
+                    background: none;
+                    padding: .5rem 1.8rem;
+                    border-radius: 2rem;
+                    border: .1rem solid $white;
+                    color: $white;
+                    @include flex;
+                    gap: 1rem;
+                    > span 
+                    {
+                        display: grid;
+                        place-items: center;
+                    }
+                }
+            }
+        }
+
+        > .cart 
+        {
+            @include flex;
+            gap: 1rem;
+            color: $white;
+            > span 
+            {
+                font-size: 2.5rem;
+                display: grid;
+                place-items: center;
+            }
+            > p 
+            {
+                font-size: 1.7rem;
+            }
+
+            &:hover
+            {
+                opacity: .5;
+            }
+        }
+
+        > .humburger
+        {
+            width: 3rem;
+            height: 2.3rem;
+            // border: 1px solid red;
+            position: relative;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &:hover 
+            {
+                opacity: .5;
+            }
+
+            > .line
+            {
+                height: .3rem;
+                width: 100%;
+                background-color: $white;
+                transform-origin: bottom left;
+                transition: .7s;
+            }
+        }
+    }
+
+    > .navbar
+    {
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+        border-top: 1px solid $lineColor;
+        flex-direction: column;
+        gap: 3rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $white;
+        z-index: 100;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-bottom: 10rem;
+        display: none;
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: .7s;
+            > ul 
+            {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items:flex-start;
+                gap: 0;
+                width: 100%;
+                > li 
+                {
+                    // border-bottom: .1rem solid $lineColor;
+                    width: 100%;
+                    // padding: 1rem 3rem;
+                    > div
+                    {
+                        @include flex($justify: space-between);
+                        padding: 1rem 3rem;
+                        border-bottom: .1rem solid $lineColor;
+                        border-top: .1rem solid $lineColor;
+                        > span:first-child
+                        {
+                            font-size: 2rem;
+                            color: $black;
+                        }
+                        > span:last-child
+                        {
+                            font-size: 3rem;
+                            color: $bg;
+                        }
+                        &:hover > span:first-child
+                        {
+                            color: $bg;
+                        }
+                    }
+
+                    > ul
+                    {
+                        width: 100%;        
+                        list-style: none;    
+                        padding: 0 3rem;        
+                        > li
+                        {
+                            padding: 1rem 3rem;
+                            border-bottom: .1rem solid $lineColor;
+                            
+                            > a 
+                            {
+                                font-size: 2rem;
+                                color: $black;
+
+                                &:hover 
+                                {
+                                    color: $bg;
+                                }
+                            }
+                        }
+
+                        > li:last-child
+                        {
+                            border-bottom-width: 0rem;
+                        }
+                    }
+                }
+            }
+        > .btn 
+        {
+            background: none;
+            padding: .8rem 1.5rem;
+            border-radius: 2rem;
+            border: .2rem solid $bg;
+            color: $bg;
+            @include flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+            width: 25rem;
+            margin-left: 3rem;
+            > span 
+            {
+                display: grid;
+                place-items: center;
+            }
+        }
+        
+    }
+
+    > .languages_container
+    {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0%;
+        top: 100%;
+        z-index: 99;
+        background-color: $blueWhite;
+        overflow-y: auto;
+        border-top: 1px solid $lineColor;
+        justify-content: flex-start;
+        padding: 2rem 4rem;
+        padding-bottom: 10rem;
+        flex-direction: column;
+        transform: translateX(-100%);
+        transition: .7s;
+
+        > .search_container
+        {
+            @include flex($justify: space-between);
+            width: 100%;
+
+            > .search_box
+            {
+                @include flex($justify: space-between);
+                width: 30rem;
+                padding: 1.5rem;
+                border: .1rem solid $lineColor;
+                background-color: $white;
+                border-radius: 2.5rem;
+
+                > input
+                {
+                    font-size: 1.5rem;
+                    border: none;
+                    outline: none;
+                    background: none;
+                    width: 90%;
+                }
+
+                > span 
+                {
+                    font-size: 1.3rem;
+                    color: $bg;
+                    display: grid;
+                    place-items: center;
+                }
+
+                &:hover
+                {
+                    border-color: $bg;
+                }
+            }
+            > div:last-child > span
+            {
+                display: grid;
+                place-items: center;
+                font-size: 1.8rem;
+                color: $white;
+                width: 4.2rem;
+                height: 4.2rem;
+                border-radius: 50%;
+                background-color: $bg;
+
+                &:hover 
+                {
+                    background-color: darken($color: $bg, $amount: 25%);
+                }
+            }
+        }
+
+        > .languages_box
+        {
+            width: 100%;
+            overflow-y: auto;
+            height: 100%;
+            background-color: $white;
+            border: .2rem solid $lineColor;
+            border-radius: .7rem;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 20rem;
+            row-gap: 3.5rem;
+            > .box 
+            {
+                @include flex;
+                gap: .7rem;
+
+                > span 
+                {
+                    font-size: 2rem;
+                }
+                > span:nth-child(2)
+                {
+                    opacity: .8;
+                }
+                > span:last-child
+                {
+                    opacity: .4;
+                }
+            }
+        }
+    }
+
+}
+
+header.language_box_active
+{
+    > .languages_container
+    {
+        transform: translateX(0);
+    }
+}
+
+header.scroll, header.nav_active, header.language_box_active
+{
+    background-color: $white;
+    box-shadow: $shadow;
+    position: fixed;
+    > div 
+    {
+        .languages
+        {
+            color: $black;
+        }
+        > div > img
+        {
+            filter: invert(0%);
+        }
+
+        > nav ul li
+        {
+            > p
+            {
+                color: $black;
+            }
+
+            > .btn
+            {
+                color: $black;
+                border-color: $black;
+            }
+        }
+        > .cart
+        {
+            color: $black;
+        }
+        > .humburger > .line
+        {
+            background-color: $black
+        }
+    }
+}
+
+@media screen and (max-width: 1092px){
+    header
+    {
+        
+        > div
+        {
+            gap: 4rem;
+            > .xl_nav
+            {
+                display: none;
+            }
+
+            > .humburger
+            {
+                display: flex;
+            }
+        }
+
+        > .navbar
+        {
+            display: flex;
+        }
+    }
+
+    header.nav_active
+    {
+        > div
+        {
+            > .humburger
+            {
+                overflow-x: hidden;
+                .line1
+                {
+                    transform: rotate(45deg);
+                }
+                
+                .line2
+                {
+                    // transition: .3s;
+                    display: none;
+                    // transform: translateX(100%);
+                }
+
+                .line3
+                {
+                    transform: rotate(-45deg) translateY(.2rem);
+                }
+            }
+        }
+        > .navbar
+        {
+            transform: translateX(0);
+            visibility: visible;
+        }
+    }
+}
+
+@media screen and (max-width: 960px)
+{
+    header
+    {
+        > .languages_container > .languages_box
+        {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 10rem;
+        }
+    }
+}
+
+
+@media screen and (max-width: 575px)
+{
+    header
+    {
+        padding: 2rem;
+        > div > .cart > p
+        {
+            display: none;
+        }
+        > div , > div:first-child
+        {
+            gap: 1.8rem;
+        }
+        > div > div > img 
+        {
+            width: 10rem;
+        }
+        
+        > .languages_container > .search_container
+        {
+            > div:last-child
+            {
+                display: none;
+            }
+            
+            > .search_box 
+            {
+                width: 100%;
+            }
+        }
+        
+        > .languages_container
+        {
+            > .languages_box
+            {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 3rem;
+                padding: 2rem 3rem;
+                > .box 
+                {
+                    justify-content: flex-start;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px)
+{
+    header > .navbar > .btn
+    {
+        margin: 1rem auto;
+    }
+
+    header > .languages_container 
+    {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 280px)
+{
+    header
+    {
+        padding: 1rem;
+
+        > div > .humburger
+        {
+            width: 3rem;
+            height: 2.3rem;
+        }
+    }
+}
